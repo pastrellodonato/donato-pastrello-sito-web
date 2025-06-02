@@ -1,0 +1,9 @@
+{
+    "name": "donato-pastrello-website",
+    "version": "1.0.0",
+    "description": "Sito web portfolio per Donato Pastrello - Drone Photography",
+    "scripts": {
+      "dev": "live-server frontend/public",
+      "build": "echo 'Build process will be added later'"
+    }
+  }
