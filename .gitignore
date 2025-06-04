@@ -1,0 +1,17 @@
+# File sensibili
+**/RIEPILOGO*
+**/CREDENZIALI*
+**/*TOKEN*
+**/*PASSWORD*
+.env
+.env.local
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Backend Strapi
+backend/.tmp/
+backend/build/
+backend/node_modules/
+backend/.env
