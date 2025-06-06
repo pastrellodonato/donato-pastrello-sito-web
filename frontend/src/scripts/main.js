@@ -172,6 +172,9 @@ class DonatoPastrelloWebsite {
             console.warn('⚠️ Strapi not available, using default content');
         }
         
+         // NUOVA RIGA AGGIUNTA ⬇️
+        await this.loadSectionSettings();
+
         // Carica portfolio
         await this.loadPortfolioData();
         
@@ -328,6 +331,11 @@ class DonatoPastrelloWebsite {
             console.error('❌ Blog loading error:', error);
             this.showEmptyBlog();
         }
+     
+        
+
+
+
     }
     
     // === CARICAMENTO CATEGORIE PORTFOLIO ===
@@ -790,6 +798,147 @@ categoryCard.addEventListener('mouseleave', () => {
             document.body.style.overflow = '';
         }
     }
+// === CARICAMENTO SEZIONI DINAMICHE ===
+async loadSectionSettings() {
+    console.log('📋 Loading section settings...');
+    
+    try {
+        const response = await fetch('http://localhost:1337/api/section-settings?sort=order:asc');
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log('✅ Section settings loaded:', data);
+            this.applySectionSettings(data.data);
+        } else {
+            console.warn('⚠️ Could not load section settings, using defaults');
+        }
+        
+    } catch (error) {
+        console.warn('⚠️ Section settings not available:', error);
+    }
+}
+
+applySectionSettings(sections) {
+    console.log('🔧 Applying section settings...');
+    
+    sections.forEach(section => {
+        const sectionElement = document.getElementById(section.section_name);
+        const navLink = document.querySelector(`a[href="#${section.section_name}"]`);
+        
+        console.log(`📋 Processing section: ${section.section_name}, visible: ${section.is_visible}`);
+        
+        // Nascondi/mostra sezione
+        if (sectionElement) {
+            sectionElement.style.display = section.is_visible ? 'block' : 'none';
+            console.log(`✅ Section ${section.section_name} set to ${section.is_visible ? 'visible' : 'hidden'}`);
+        }
+        
+        // Nascondi/mostra link nav
+        if (navLink && navLink.parentElement) {
+            navLink.parentElement.style.display = section.is_visible ? 'block' : 'none';
+            console.log(`✅ Nav link ${section.section_name} set to ${section.is_visible ? 'visible' : 'hidden'}`);
+        }
+        
+        // Aggiorna contenuti se visibile
+        if (section.is_visible && sectionElement) {
+            this.updateSectionContent(section, sectionElement);
+        }
+    });
+    
+    console.log('✅ Section settings applied successfully');
+}
+
+updateSectionContent(section, element) {
+    console.log(`🎨 Updating content for section: ${section.section_name}`);
+    
+    // Aggiorna titolo principale
+    const titleElement = element.querySelector('.section-title, .hero-title, h1, h2');
+    if (titleElement && section.title) {
+        titleElement.textContent = section.title;
+        console.log(`📝 Updated title: ${section.title}`);
+    }
+    
+    // Aggiorna sottotitolo
+    const subtitleElement = element.querySelector('.hero-subtitle, .section-subtitle, .category-description');
+    if (subtitleElement && section.subtitle) {
+        subtitleElement.textContent = section.subtitle;
+        console.log(`📝 Updated subtitle: ${section.subtitle}`);
+    }
+    
+    // Aggiorna contenuto rich text
+    const contentElement = element.querySelector('.section-content, .about-description');
+    if (contentElement && section.content) {
+        contentElement.innerHTML = section.content;
+        console.log(`📝 Updated content`);
+    }
+    
+    // Aggiorna bottoni
+    const buttonElement = element.querySelector('.cta-button, .section-button, .btn');
+    if (buttonElement && section.button_text) {
+        buttonElement.textContent = section.button_text;
+        if (section.button_link) {
+            buttonElement.setAttribute('href', section.button_link);
+        }
+        console.log(`🔘 Updated button: ${section.button_text}`);
+    }
+    
+    // Aggiorna bottoni "Scopri di più" nella sezione About
+    if (section.section_name === 'about') {
+        this.updateAboutSection(section, element);
+    }
+}
+
+updateAboutSection(section, element) {
+    console.log('👤 Updating About section with dynamic content...');
+    
+    // Cerca se esiste già un bottone, altrimenti crealo
+    let discoverButton = element.querySelector('.discover-more-btn');
+    
+    if (section.button_text && section.button_link) {
+        if (!discoverButton) {
+            // Crea il bottone se non esiste
+            const aboutText = element.querySelector('.about-text');
+            if (aboutText) {
+                discoverButton = document.createElement('a');
+                discoverButton.className = 'discover-more-btn';
+                discoverButton.style.cssText = `
+                    display: inline-block;
+                    margin-top: 1.5rem;
+                    padding: 12px 24px;
+                    background: var(--color-brown-medium);
+                    color: var(--color-cream);
+                    text-decoration: none;
+                    border-radius: 25px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                `;
+                
+                // Hover effect
+                discoverButton.addEventListener('mouseenter', () => {
+                    discoverButton.style.background = 'var(--color-brown-dark)';
+                    discoverButton.style.transform = 'translateY(-2px)';
+                });
+                
+                discoverButton.addEventListener('mouseleave', () => {
+                    discoverButton.style.background = 'var(--color-brown-medium)';
+                    discoverButton.style.transform = 'translateY(0)';
+                });
+                
+                aboutText.appendChild(discoverButton);
+            }
+        }
+        
+        if (discoverButton) {
+            discoverButton.textContent = section.button_text;
+            discoverButton.href = section.button_link;
+            discoverButton.style.display = 'inline-block';
+        }
+    } else if (discoverButton) {
+        // Nascondi il bottone se non ci sono dati
+        discoverButton.style.display = 'none';
+    }
+}
+
 }
 
 // === CSS LIGHTBOX COMPLETO ===
