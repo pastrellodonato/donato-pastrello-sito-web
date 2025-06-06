@@ -50,10 +50,11 @@
         --header-height: 70px;
     }
     
-    /* === HEADER MOBILE === */
+    /* === HEADER MOBILE MIGLIORATO === */
     .hamburger {
         display: flex;
         z-index: 1002;
+        position: relative;
     }
 
     .nav-menu {
@@ -61,16 +62,22 @@
         left: -100%;
         top: 0;
         flex-direction: column;
-        background-color: var(--color-cream);
+        background-color: rgba(248, 244, 240, 0.98);
+        backdrop-filter: blur(15px);
         width: 100%;
         height: 100vh;
         text-align: center;
         transition: left var(--transition-normal);
-        padding: 100px 0 2rem 0;
+        padding: 100px 20px 60px 20px; /* Più spazio sopra e sotto */
         z-index: 1001;
         justify-content: flex-start;
         align-items: center;
         box-shadow: var(--shadow-heavy);
+        overflow-y: auto; /* Scroll se necessario */
+        
+        /* Assicura che sia sempre visibile quando attivo */
+        min-height: 100vh;
+        max-height: 100vh;
     }
 
     .nav-menu.active {
@@ -78,25 +85,69 @@
     }
 
     .nav-menu li {
-        margin: var(--spacing-md) 0;
+        margin: 20px 0; /* Più spazio tra le voci */
         list-style: none;
+        width: 100%;
+        max-width: 300px; /* Limita larghezza per tocco migliore */
     }
 
     .nav-menu a {
-        font-size: 1.3rem;
+        font-size: 1.4rem; /* Font più grande */
         color: var(--color-brown-dark);
         font-weight: var(--font-weight-medium);
-        padding: var(--spacing-sm) var(--spacing-md);
+        padding: 16px 24px; /* Più padding per tocco facile */
         border-radius: var(--radius-sm);
         transition: all var(--transition-normal);
         display: block;
+        width: 100%;
+        position: relative;
+        
+        /* Miglior contrasto e visibilità */
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(141, 110, 99, 0.2);
     }
     
-    .nav-menu a:hover {
-        background-color: var(--color-beige);
+    .nav-menu a:hover,
+    .nav-menu a:focus {
+        background-color: var(--color-brown-medium);
+        color: var(--color-cream);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(78, 52, 46, 0.3);
     }
     
-    /* === HERO MOBILE === */
+    .nav-menu a.active {
+        background-color: var(--color-brown-dark);
+        color: var(--color-cream);
+    }
+    
+    /* === OVERLAY DIETRO IL MENU === */
+    .nav-menu.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    }
+    
+    /* === HAMBURGER ANIMAZIONE MIGLIORATA === */
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+        background: var(--color-brown-dark);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+        background: var(--color-brown-dark);
+    }
+
+    /* === RESTO DEL CSS MOBILE === */
     .hero-title {
         font-size: 2.5rem;
     }
@@ -110,7 +161,6 @@
         font-size: 0.95rem;
     }
 
-    /* === SECTIONS MOBILE === */
     .section {
         padding: var(--spacing-xl) 0;
     }
@@ -124,7 +174,7 @@
         padding: 0 var(--spacing-sm);
     }
 
-    /* === ABOUT MOBILE === */
+    /* Altri stili mobile esistenti... */
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -143,7 +193,6 @@
         justify-content: center;
     }
 
-    /* === PORTFOLIO MOBILE === */
     .portfolio-filters {
         flex-direction: column;
         align-items: center;
@@ -164,7 +213,6 @@
         height: 200px;
     }
 
-    /* === SERVICES MOBILE === */
     .services-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
@@ -180,7 +228,6 @@
         font-size: 1.8rem;
     }
 
-    /* === BLOG MOBILE === */
     .blog-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
@@ -194,7 +241,6 @@
         padding: var(--spacing-sm);
     }
 
-    /* === SOCIAL MOBILE === */
     .social-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
@@ -204,7 +250,6 @@
         padding: var(--spacing-md);
     }
 
-    /* === CONTACT MOBILE === */
     .contact-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
@@ -219,7 +264,6 @@
         padding: 10px 14px;
     }
 
-    /* === FOOTER MOBILE === */
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -230,261 +274,12 @@
         justify-content: center;
     }
 
-    /* === BACK TO TOP MOBILE === */
     .back-to-top {
         bottom: 20px;
         right: 20px;
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
-    }
-}
-
-/* === LARGE MOBILE === */
-@media (max-width: 480px) {
-    :root {
-        --spacing-xxl: 2.5rem;
-        --spacing-xl: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-md: 1.5rem;
-        --header-height: 65px;
-    }
-
-    /* === HEADER SMALL MOBILE === */
-    .nav-container {
-        padding: 0 var(--spacing-sm);
-    }
-
-    .logo a {
-        font-size: 1.1rem;
-    }
-
-    /* === HERO SMALL MOBILE === */
-    .hero-content {
-        padding: 0 var(--spacing-sm);
-    }
-
-    .hero-title {
-        font-size: 2rem;
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    /* === SECTIONS SMALL MOBILE === */
-    .section {
-        padding: var(--spacing-lg) 0;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-
-    /* === ABOUT SMALL MOBILE === */
-    .about-img {
-        height: 220px;
-    }
-
-    .about-description {
-        font-size: 1rem;
-    }
-
-    .skill-tag {
-        font-size: 0.8rem;
-        padding: 4px 8px;
-    }
-
-    /* === PORTFOLIO SMALL MOBILE === */
-    .filter-btn {
-        width: 180px;
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
-
-    .portfolio-item {
-        height: 180px;
-    }
-
-    /* === SERVICES SMALL MOBILE === */
-    .service-card {
-        padding: var(--spacing-sm);
-    }
-
-    .service-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-
-    .service-title {
-        font-size: 1.1rem;
-    }
-
-    .service-description {
-        font-size: 0.95rem;
-    }
-
-    /* === BLOG SMALL MOBILE === */
-    .blog-image {
-        height: 120px;
-    }
-
-    .blog-title {
-        font-size: 1.1rem;
-    }
-
-    .blog-excerpt {
-        font-size: 0.95rem;
-    }
-
-    /* === SOCIAL SMALL MOBILE === */
-    .social-icon {
-        font-size: 2.5rem;
-    }
-
-    .social-title {
-        font-size: 1.1rem;
-    }
-
-    .social-description {
-        font-size: 0.95rem;
-    }
-
-    /* === CONTACT SMALL MOBILE === */
-    .contact-info h3 {
-        font-size: 1.3rem;
-    }
-
-    .contact-info p {
-        font-size: 1rem;
-    }
-
-    .contact-item {
-        font-size: 1rem;
-    }
-
-    .contact-form {
-        padding: var(--spacing-sm);
-    }
-
-    .form-group {
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .form-group label {
-        font-size: 0.95rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 8px 12px;
-        font-size: 0.95rem;
-    }
-
-    .submit-btn {
-        padding: 12px 24px;
-        font-size: 0.95rem;
-        width: 100%;
-    }
-
-    /* === FOOTER SMALL MOBILE === */
-    .footer {
-        padding: var(--spacing-md) 0;
-    }
-
-    .footer-text p {
-        font-size: 0.9rem;
-    }
-
-    .footer-links a {
-        font-size: 0.9rem;
-    }
-
-    /* === BACK TO TOP SMALL MOBILE === */
-    .back-to-top {
-        bottom: 15px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-}
-
-/* === EXTRA SMALL MOBILE === */
-@media (max-width: 360px) {
-    :root {
-        --spacing-md: 1rem;
-        --spacing-sm: 0.75rem;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .section-title {
-        font-size: 1.6rem;
-    }
-
-    .about-img {
-        height: 200px;
-    }
-
-    .portfolio-item {
-        height: 160px;
-    }
-
-    .filter-btn {
-        width: 160px;
-        font-size: 0.8rem;
-    }
-
-    .service-card,
-    .blog-card,
-    .social-card {
-        padding: 1rem;
-    }
-}
-
-/* === LANDSCAPE MOBILE === */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        height: 100vh;
-        min-height: 500px;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .cta-button {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
-
-    .nav-menu {
-        padding: 80px 0 1rem 0;
-    }
-
-    .nav-menu li {
-        margin: var(--spacing-sm) 0;
     }
 }
 
@@ -562,5 +357,116 @@
     .container {
         max-width: none !important;
         padding: 0 !important;
+    }
+}
+
+/* === FIX COLORI MENU MOBILE === */
+@media (max-width: 768px) {
+    .nav-menu a {
+        font-size: 1.4rem;
+        color: var(--color-brown-dark) !important;
+        font-weight: var(--font-weight-medium);
+        padding: 16px 24px;
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-normal);
+        display: block;
+        width: 100%;
+        position: relative;
+        
+        /* BACKGROUND UNIFORME PER TUTTI */
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(141, 110, 99, 0.2);
+    }
+    
+    /* HOVER UNIFORME PER TUTTI */
+    .nav-menu a:hover,
+    .nav-menu a:focus {
+        background-color: var(--color-brown-medium) !important;
+        color: var(--color-cream) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(78, 52, 46, 0.3);
+    }
+    
+    /* ACTIVE STATE UNIFORME */
+    .nav-menu a.active {
+        background-color: var(--color-brown-light) !important;
+        color: var(--color-brown-dark) !important;
+    }
+    
+    /* RESET EVENTUALI STILI SPECIFICI */
+    .nav-menu li:nth-child(1) a,
+    .nav-menu li:nth-child(2) a,
+    .nav-menu li:nth-child(3) a,
+    .nav-menu li:nth-child(4) a,
+    .nav-menu li:nth-child(5) a,
+    .nav-menu li:nth-child(6) a,
+    .nav-menu li:nth-child(7) a {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: var(--color-brown-dark) !important;
+    }
+    
+    /* HOVER PER TUTTI I LINK */
+    .nav-menu li:nth-child(1) a:hover,
+    .nav-menu li:nth-child(2) a:hover,
+    .nav-menu li:nth-child(3) a:hover,
+    .nav-menu li:nth-child(4) a:hover,
+    .nav-menu li:nth-child(5) a:hover,
+    .nav-menu li:nth-child(6) a:hover,
+    .nav-menu li:nth-child(7) a:hover {
+        background-color: var(--color-brown-medium) !important;
+        color: var(--color-cream) !important;
+    }
+}
+
+/* === FIX MENU FULL SCREEN UNIFORME === */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        flex-direction: column;
+        
+        /* BACKGROUND UNIFORME PER TUTTO LO SCHERMO */
+        background: rgba(248, 244, 240, 0.98) !important;
+        backdrop-filter: blur(15px);
+        
+        width: 100vw !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        
+        text-align: center;
+        transition: left var(--transition-normal);
+        padding: 100px 20px 60px 20px;
+        z-index: 1001;
+        justify-content: flex-start;
+        align-items: center;
+        box-shadow: none;
+        overflow-y: auto;
+        
+        /* ASSICURA CHE COPRA TUTTO */
+        margin: 0;
+        border: none;
+        outline: none;
+    }
+
+    .nav-menu.active {
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    /* ELIMINA EVENTUALI OVERLAY DIETRO */
+    .nav-menu.active::before {
+        display: none !important;
+    }
+    
+    /* ASSICURA CHE IL BODY NON INTERFERISCA */
+    body.menu-open {
+        overflow: hidden !important;
+        height: 100vh !important;
+        position: fixed !important;
+        width: 100% !important;
     }
 }

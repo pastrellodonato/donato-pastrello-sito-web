@@ -584,41 +584,100 @@ categoryCard.addEventListener('mouseleave', () => {
         `;
     }
     
-    // === NAVIGATION ===
-    initNavigation() {
-        const hamburger = utils.select('#hamburger');
-        const navMenu = utils.select('#nav-menu');
-        const navLinks = utils.selectAll('.nav-link');
+   // === NAVIGATION MIGLIORATA ===
+   initNavigation() {
+    const hamburger = utils.select('#hamburger');
+    const navMenu = utils.select('#nav-menu');
+    const navLinks = utils.selectAll('.nav-link');
+    const header = utils.select('#header');
+    
+    if (!hamburger || !navMenu) return;
+    
+    // Toggle menu hamburger
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         
-        if (!hamburger || !navMenu) return;
+        const isActive = hamburger.classList.contains('active');
         
-        hamburger.addEventListener('click', (e) => {
+        if (isActive) {
+            this.closeMenu(hamburger, navMenu);
+        } else {
+            this.openMenu(hamburger, navMenu);
+        }
+    });
+    
+    // Click sui link del menu
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
             e.preventDefault();
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = link.getAttribute('href');
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+            const target = link.getAttribute('href');
+            
+            // Chiudi menu mobile
+            this.closeMenu(hamburger, navMenu);
+            
+            // Smooth scroll
+            setTimeout(() => {
                 utils.smoothScroll(target);
-            });
+            }, 300);
         });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+    });
+    
+    // Chiudi menu cliccando fuori
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && 
+            !navMenu.contains(e.target) && 
+            navMenu.classList.contains('active')) {
+            this.closeMenu(hamburger, navMenu);
+        }
+    });
+    
+    // Chiudi menu con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            this.closeMenu(hamburger, navMenu);
+        }
+    });
+    
+    // Chiudi menu su resize se desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            this.closeMenu(hamburger, navMenu);
+        }
+    });
+}
+
+openMenu(hamburger, navMenu) {
+    console.log('📱 Opening mobile menu');
+    hamburger.classList.add('active');
+    navMenu.classList.add('active');
+    
+    // BLOCCA COMPLETAMENTE IL BODY
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100vh';
+    document.body.classList.add('menu-open');
+    
+    // Focus accessibility
+    const firstLink = navMenu.querySelector('.nav-link');
+    if (firstLink) {
+        setTimeout(() => firstLink.focus(), 100);
     }
+}
+
+closeMenu(hamburger, navMenu) {
+    console.log('📱 Closing mobile menu');
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    
+    // RIPRISTINA IL BODY
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.height = '';
+    document.body.classList.remove('menu-open');
+}
     
     // === PORTFOLIO FILTERS ===
     initPortfolio() {
