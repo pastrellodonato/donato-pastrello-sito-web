@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donato Pastrello - Fotografo e Dronista professionale. Portfolio di fotografia aerea, servizi fotografici e video con drone.">
+    <meta name="keywords" content="fotografo, drone, fotografia aerea, video drone, Donato Pastrello, portfolio">
+    <meta name="author" content="Donato Pastrello">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Donato Pastrello - Drone Photography & Videography">
+    <meta property="og:description" content="Portfolio professionale di fotografia e video con drone">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta property="og:url" content="https://donatopastrello.com">
+    <meta property="og:type" content="website">
+    
+    <title>Donato Pastrello - Drone Photography & Videography</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../src/styles/main.css">
+    <link rel="stylesheet" href="../src/styles/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">Donato Pastrello</a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">Chi Sono</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#services" class="nav-link">Servizi</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#social" class="nav-link">Social</a></li>
+                    <li><a href="#contact" class="nav-link">Contatti</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <!-- Placeholder per video/immagine di sfondo -->
+                <div class="hero-media" style="
+       background: linear-gradient(135deg, #8D6E63, #4E342E);
+             ">
+              <!-- Background gradient instead of image -->
+               </div>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Drone Photography & Videography</h1>
+                <p class="hero-subtitle">Catturando il mondo da prospettive uniche</p>
+                <a href="#portfolio" class="cta-button">Scopri il Portfolio</a>
+            </div>
+        </section>
+
+        <!-- CHI SONO -->
+        <section id="about" class="about section">
+            <div class="container">
+                <h2 class="section-title">Chi Sono</h2>
+                <div class="about-content">
+                    <div class="about-image">
+    <img src="http://localhost:1337/uploads/donato_photo_d13d76dd03.jpg" alt="Donato Pastrello" class="about-img">
+</div>
+                    
+</div>
+                    <div class="about-text">
+                        <p class="about-description">
+                            <!-- Contenuto caricato da Strapi -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2 class="section-title">Portfolio</h2>
+                
+                <!-- CATEGORIE CON IMMAGINI -->
+                <div class="portfolio-categories">
+                    <div id="dynamic-categories">
+                        <!-- Le categorie vengono caricate dinamicamente da Strapi -->
+                    </div>
+                </div>
+                
+                <!-- GRIGLIA PORTFOLIO -->
+                <div id="portfolio-grid" class="portfolio-grid">
+                    <!-- Gli items vengono caricati dinamicamente da JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIZI -->
+        <section id="services" class="services section">
+            <div class="container">
+                <h2 class="section-title">Servizi</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-drone">🚁</i>
+                        </div>
+                        <h3 class="service-title">Riprese Aeree</h3>
+                        <p class="service-description">
+                            Video e fotografie aeree professionali per eventi, 
+                            immobili e paesaggi con droni di ultima generazione.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-camera">📸</i>
+                        </div>
+                        <h3 class="service-title">Fotografia</h3>
+                        <p class="service-description">
+                            Servizi fotografici per matrimoni, eventi aziendali 
+                            e ritratti con approccio creativo e professionale.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-video">🎥</i>
+                        </div>
+                        <h3 class="service-title">Video Production</h3>
+                        <p class="service-description">
+                            Realizzazione di video promozionali, documentari 
+                            e contenuti per social media di alta qualità.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section id="blog" class="blog section">
+            <div class="container">
+                <h2 class="section-title">Blog</h2>
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Vuoto - sarà riempito da JavaScript -->
+                </div>
+            </div>
+        </section>
+        <div style="text-align: center; margin-top: 2rem;">
+    <a href="blog.html" class="blog-view-all-btn" style="
+        display: inline-block;
+        padding: 10px 25px;
+        background: var(--color-brown-medium);
+        color: var(--color-cream);
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    ">
+        Vedi tutti gli articoli
+    </a>
+</div>
+
+        <!-- SOCIAL -->
+        <section id="social" class="social section">
+            <div class="container">
+                <h2 class="section-title">Seguimi sui Social</h2>
+                <div class="social-grid">
+                    <div class="social-card">
+                        <div class="social-icon">📷</div>
+                        <h3 class="social-title">Instagram</h3>
+                        <p class="social-description">
+                            Le mie foto quotidiane e dietro le quinte dei progetti
+                        </p>
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            @donatopastrello
+                        </a>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-icon">🎥</div>
+                        <h3 class="social-title">YouTube</h3>
+                        <p class="social-description">
+                            Tutorial, viaggi fotografici e recensioni di attrezzature
+                        </p>
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            Donato Pastrello
+                        </a>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-icon">💼</div>
+                        <h3 class="social-title">LinkedIn</h3>
+                        <p class="social-description">
+                            Aggiornamenti professionali e collaborazioni
+                        </p>
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            Donato Pastrello
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATTI -->
+        <section id="contact" class="contact section">
+            <div class="container">
+                <h2 class="section-title">Contatti</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Parliamo del tuo progetto</h3>
+                        <p>
+                            Sono sempre interessato a nuovi progetti creativi 
+                            e collaborazioni interessanti. Scrivimi!
+                        </p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <span>info@donatopastrello.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <span>Isola Rizza, Veneto</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nome *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Oggetto</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Messaggio *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Invia Messaggio</span>
+                            <span class="btn-loading" style="display: none;">Invio...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Donato Pastrello. Tutti i diritti riservati.</p>
+                    <p>Drone Photography & Videography</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Termini di Servizio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="back-to-top" aria-label="Torna in alto">
+        ↑
+    </button>
+
+    <!-- JavaScript -->
+    <script src="../src/scripts/main.js"></script>
+</body>
+</html>

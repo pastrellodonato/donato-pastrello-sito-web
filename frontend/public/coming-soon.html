@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donato Pastrello - Drone Photography & Videography - Sito in arrivo">
+    <title>Donato Pastrello - Coming Soon</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Inline -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Palette autunnale */
+        :root {
+            --color-cream: #F8F4F0;
+            --color-brown-dark: #4E342E;
+            --color-brown-medium: #8D6E63;
+            --color-brown-light: #BCAAA4;
+            --color-beige: #D7CCC8;
+            --color-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-beige) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-brown-dark);
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            background: var(--color-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(78, 52, 46, 0.15);
+            animation: fadeInUp 1s ease;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-brown-dark);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            margin: 2rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--color-brown-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--color-brown-medium);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--color-brown-medium);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            background: var(--color-cream);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: var(--color-brown-dark);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--color-brown-medium);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .social-link:hover {
+            background: var(--color-brown-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(78, 52, 46, 0.3);
+        }
+
+        .progress-container {
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-brown-dark);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-beige);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-brown-medium), var(--color-brown-dark));
+            border-radius: 4px;
+            animation: progressAnimation 2s ease-in-out;
+        }
+
+        .footer-text {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--color-brown-light);
+            font-style: italic;
+        }
+
+        /* Animazioni */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes progressAnimation {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 95%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 2.2rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .main-title {
+                font-size: 1.7rem;
+            }
+
+            .coming-soon-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">Donato Pastrello</div>
+        
+        <!-- Icona drone animata -->
+        <div class="coming-soon-icon">🚁</div>
+        
+        <!-- Titolo principale -->
+        <h1 class="main-title">Sito in Costruzione</h1>
+        
+        <!-- Sottotitolo -->
+        <p class="subtitle">
+            Il mio nuovo portfolio di Dronista sta per arrivare !!
+        </p>
+        
+        <!-- Descrizione -->
+        <p class="description">
+            Sto lavorando su qualcosa di speciale !
+        </p>
+
+        <!-- Barra di progresso -->
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Completamento sito</span>
+                <span>95%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+        </div>
+        
+        <!-- Informazioni di contatto -->
+        <div class="contact-info">
+            <h2 class="contact-title">Contattami</h2>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span>pastrellodonato@gmail.com</span>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>based in Veneto</span>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-icon">🚁</span>
+                <span>Servizi di ripresa aerea professionale</span>
+            </div>
+        </div>
+        
+        <!-- Link social -->
+        <div class="social-links">
+            <a href="https://www.instagram.com/pastrellino" class="social-link" target="_blank" rel="noopener">
+                📷 Instagram
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <p class="footer-text">
+            Stay tuned! Il sito completo sarà online a breve 🚀
+        </p>
+    </div>
+</body>
+</html>

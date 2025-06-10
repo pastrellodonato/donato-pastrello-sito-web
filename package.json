@@ -1,0 +1,11 @@
+{
+    "name": "donato-pastrello-website",
+    "version": "1.0.0",
+    "description": "Sito web portfolio per Donato Pastrello - Drone Photography",
+   "scripts": {
+  "develop": "strapi develop",
+  "start": "strapi start",
+  "build": "strapi build",
+  "strapi": "strapi"
+}
+  }
